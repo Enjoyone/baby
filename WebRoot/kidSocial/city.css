@@ -1,0 +1,50 @@
+.city-map{
+    display: flex;
+}
+.city-map .left1{
+    flex:1;
+    border-right: 1px solid lightgray;
+}
+.city-map .left1>div:nth-child(2){
+    margin-top: 100px;
+    padding-top: 10px;
+    border-top: 1px solid gray;
+}
+.city-map .right1{
+    position: relative;
+    flex:4;
+    border-right:1px solid gray;
+}
+.city-map .right1>div{
+    position: relative;
+    width:910px;
+ }
+
+
+
+
+
+/* 字体 */
+.city-map .left1 ul a{
+    font-size: 30px;
+}
+.city-map .left1>div:nth-child(2) span:nth-child(1){
+    font-size: 20px;
+}
+.city-map .left1>div:nth-child(2) span:nth-child(2){
+    font-size: 25px;
+}
+
+
+.citySocial .word1{
+    font-size: 25px;
+    padding:20px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+
+

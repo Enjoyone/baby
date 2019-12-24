@@ -1,0 +1,40 @@
+
+.plan-show{
+    display: flex;
+}
+.plan-show>div:nth-child(1){
+    flex: 5;
+}
+.plan-show>div:nth-child(2){
+    flex: 1;
+    width: 250px;
+    border-left: 1px solid lightgray;
+}
+
+/* 推荐计划 */
+.recommend-plan{
+
+}
+.recommend-plan>div{
+    height: 40px;
+}
+.recommend-plan>div:nth-child(1){
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 60px;
+}
+
+.recommend-plan span{
+    font-size: 25px;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.recommend-plan img{
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+}
+
+
+
+

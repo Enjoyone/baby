@@ -1,0 +1,85 @@
+DatabaseName=baby;user=sa;password=mis123456
+
+
+接口 interface
+实现类+Impl，并新建impl包 放里面
+
+如：
+import *.loginRegister
+interface Login(){
+	List<Parent> backParentByParentID(String parentID);
+}
+
+import *.loginRegister.impl
+public class Login(){
+	public List<Parent> backParentByParentID(String parentID){
+	
+		return ...;
+	}
+}
+
+
+登录注册：
+1.servlet
+（1）类：Login{
+	
+}
+
+Register{
+
+
+}
+
+2.servive
+(1)interface LoginRegister{
+List<Parent> backParentByParentID(String parentID);
+boolean isExist(String parentID);
+boolean addParent(Parent parent);
+}
+3.dao
+interface LoginRegisterDao{
+List<Parent> backParents();       -----此方法后续管理后台用
+List<Parent> backParentByParentID(String parentID);
+boolean addParent(Parent parent);
+}
+
+
+
+主页
+1.servlet:
+Index
+
+返回文章，精选日记（评论数前5）
+
+2.service
+interface Index{
+	List<Article> backArticles(); 
+	List<Diary> backTopDiary();
+}
+
+3.dao
+interface Index{
+	List<Article> backArticles(); 
+	List<Diary> backTopDiary();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
