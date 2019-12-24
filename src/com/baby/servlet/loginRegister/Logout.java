@@ -1,4 +1,4 @@
-package com.baby.servlet.loginregister;
+package com.baby.servlet.loginRegister;
 
 import java.io.IOException;
 import java.io.PrintWriter;

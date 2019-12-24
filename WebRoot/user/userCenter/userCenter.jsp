@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <%@ include file="/headerFooter/footer.jsp" %>
 	<!-- Include All JavaScript -->
-	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/jquery-3.3.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="user/userCenter/userCenter.js"></script>
 
