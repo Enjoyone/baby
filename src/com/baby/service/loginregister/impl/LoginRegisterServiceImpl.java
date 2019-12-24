@@ -9,44 +9,51 @@ import com.baby.entity.Parent;
 import com.baby.service.loginRegister.LoginRegisterService;
 
 public class LoginRegisterServiceImpl implements LoginRegisterService {
-	
-	
+
 	public List<Parent> backParent(Map<String, String> map) {
-		
-		
 		return new LoginRegisterDaoImpl().backParent(map);
 	}
 
 	@Override
 	public boolean loginCheck(String parentID, String password) {
-		Map<String, String> map=new HashMap<String, String>();
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("parentID", parentID);
-		
-		Parent parent =  backParent(map).get(0);
-		
-		if(password.equals(parent.getPwd())&&parent.isStatus()){
+
+		Parent parent = backParent(map).get(0);
+
+		if (password.equals(parent.getPwd())) {
 			return true;
+		}else{
+			return false;
 		}
-		return false;
+		
 	}
-	
+
 	@Override
 	public boolean addParent(Parent parent) {
-		// TODO Auto-generated method stub
-		if(!isExist(parent.getParentID())&&new LoginRegisterDaoImpl().addParent(parent)){
-			return true;
+
+		if (!isExist(parent.getParentID())) {
+			if (new LoginRegisterDaoImpl().addParent(parent)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
-		
-		return false;
+
 	}
-	
+
 	@Override
 	public boolean isExist(String parentID) {
-
-		
-		return false;
+		Map<String, String> map = new HashMap<>();
+		map.put("parentID", parentID);
+		Parent parent = backParent(map).get(0);
+		if (parent == null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-
-
 
 }

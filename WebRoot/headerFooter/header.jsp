@@ -33,8 +33,8 @@
 					<ul class="main-menu pull-right">
 
 						<c:choose>
-							<c:when test="${userID!=null}">
-								<li class="menu-has-child"><a href="#">James</a>
+							<c:when test="${parentID!=null}">
+								<li class="menu-has-child"><a href="#">${parentID}</a>
 									<ul>
 										<li><a href="#">个人中心</a></li>
 										<li><a href="logout">退出</a></li>
