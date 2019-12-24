@@ -2,7 +2,9 @@ package com.baby.dao.loginregisterdao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.baby.dao.DbObject;
 import com.baby.dao.loginregisterdao.LoginRegisterDao;
@@ -10,32 +12,31 @@ import com.baby.entity.Parent;
 
 
 public class LoginRegisterDaoImpl implements LoginRegisterDao {
-
-	public LoginRegisterDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
-	public List<Parent> backParents() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Parent backParentByParentID(String parentID) {
-		// TODO Auto-generated method stub
-		DbObject db = new DbObject();
+	public List<Parent> backParent(Map<String, String> maps) {
 		ResultSet rs = null;
+		
+		List<Parent> parents=null;
+		Object[] param = null;
 		Parent parent = null;
-
+		String sql=null;
+		if (maps.size()<1) {
+			sql="select * from parentShow";
+		}
+		if (maps.size()==1) {
+			if (maps.containsKey("parentID")) {
+				 sql = "select * from parentShow where parentID=?";
+				 param=new Object[1];
+				 param[0]=maps.get("parentID");
+			}
+		}
+		
 		try {
 			// 4.
-			String sql = "select * from parentShow where parentID=?";
-			Object param[] = new Object[1];
-			param[0] = parentID;
-			rs = db.executeQuery(sql, param);
+			rs = new DbObject().executeQuery(sql, param);
 			if (rs.next()) {
 				parent = new Parent();
+				parents=new ArrayList<>();
 				parent.setParentID(rs.getString("parentID"));
 				parent.setName(rs.getString("name"));
 				parent.setSex(rs.getString("sex"));
@@ -46,12 +47,13 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 				parent.setPwd(rs.getString("pwd"));
 				parent.setRole(rs.getString("role"));
 				parent.setStatus(rs.getBoolean("status"));
+				parents.add(parent);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			// ¹
-			db.close();
+			new DbObject().close();
 		}
 		try {
 			rs.close();
@@ -59,7 +61,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return parent;
+		return parents;
 		
 	}
 
