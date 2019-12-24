@@ -81,7 +81,7 @@ public class AdminWeb extends HttpServlet {
 			int pageIndex=Integer.parseInt(request.getParameter("pageIndex"));
 		//	int pageSize=Integer.parseInt(request.getParameter("pageSize"));
 			articleList=new AdminDaoImpl().articlePageDao(pageIndex,10);
-			
+
 			Gson gson = new Gson();
 			String articleJson = gson.toJson(articleList);
 			
