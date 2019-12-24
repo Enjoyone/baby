@@ -1,73 +1,33 @@
 package com.baby.dao.admin.impl;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import com.blog.dao.admin.AdminDao;
-import com.blog.dao.common.impl.CommonDaoImpl;
-import com.blog.entity.Admin;
-import com.blog.entity.AppealArticle;
-import com.blog.entity.Article;
-import com.blog.entity.ArticleType;
-import com.blog.entity.User;
+import com.baby.dao.DbObject;
+import com.baby.dao.admin.AdminDao;
+import com.baby.entity.Article;
+import com.baby.entity.ArticleType;
+import com.baby.entity.Diary;
+import com.baby.entity.DiaryType;
+import com.baby.entity.Parent;
 
 public class AdminDaoImpl implements AdminDao {
-
-	public List<Admin> backAdmin(Map<String, String> maps) {
-		ResultSet rs = null;
-		// 声明变量
-		Admin admin = null;
-		List<Admin> adminList = new ArrayList<>();
-		String sql = null;
-		Object[] param = null;
-		if (maps.size() < 1) {
-			sql = "select * from adminInfo";
-		} else {
-			sql = "select * from adminInfo where userID=?";
-			param = new Object[1];
-			param[0] = maps.get("userID");
-		}
-		// 加载驱动
-		try {
-			rs = new CommonDaoImpl().executeQuery(sql, param);
-			while (rs.next()) {
-				admin = new Admin();
-				admin.setUserID(rs.getString("userID"));
-				admin.setUserName(rs.getString("userName"));
-				admin.setUserPWD(rs.getString("userPWD"));
-				admin.setRegisterTime(rs.getString("registerTime"));
-				admin.setGender(rs.getBoolean("gender"));
-				admin.setPhone(rs.getString("phone"));
-				admin.setType(rs.getBoolean("type"));
-				admin.setStatus(rs.getBoolean("status"));
-				adminList.add(admin);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			new CommonDaoImpl().close();
-		}
-
-		return adminList;
-	}
-
-	public Boolean changeUserStatus(String userID, boolean toStatus) {
+	
+	public Boolean changeUserStatus(String parentID, boolean toStatus){
 		boolean success = false;
 
 		String sql = null;
 		Object[] param = null;
 		int i = -1;
 
-		sql = "update userInfo set status=? where userID=?";
+		sql = "update parent set status=? where parentID=?";
 		param = new Object[2];
 		param[0] = toStatus;
-		param[1] = userID;
+		param[1] = parentID;
 
 		try {
-			i = new CommonDaoImpl().executeUpdate(sql, param);
+			i = new DbObject().executeUpdate(sql, param);
 			if (i > 0) {
 				success = true;
 			}
@@ -76,55 +36,17 @@ public class AdminDaoImpl implements AdminDao {
 		}
 
 		return success;
-
-	}
-	
-	
-	public List<AppealArticle> backAppealArticles(){
-		List<AppealArticle> appealArticles=new ArrayList<>();
 		
-		ResultSet rs=null;
-		AppealArticle appealArticle=null;
-		User user=null;
-		String sql="select * from AppealArticle";
-		Object[]param=null;
 		
-		try {
-			rs=new CommonDaoImpl().executeQuery(sql, param);
-			while(rs.next()){
-				appealArticle=new AppealArticle();
-				appealArticle.setAppealArticleID(rs.getInt("appealArticleID"));
-				appealArticle.setArticleID(rs.getInt("articleID"));
-				appealArticle.setCon(rs.getString("con"));
-				user=new User();
-				user.setUserID(rs.getString("userID"));
-				appealArticle.setUser(user);
-				appealArticles.add(appealArticle);
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}finally{
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return appealArticles;
-
 	}
 
-
-	public List<Article> articlePageDao(int pageIndex,int pageSize) {
+	public List<Article> articlePageDao(int pageIndex,int pageSize){
 		ResultSet rs = null;
 		// 声明变量
 		String sql="select top (select ?) * from "
-				+ "(select row_number() over(order by articleID) as rownumber,* from articleShow) "
+				+ "(select row_number() over(order by articleID) as rownumber,* from article) "
 				+ "temp_row where rownumber>(?-1)*?";
 		Article article = null;
-		User userInfo = null;
 		ArticleType articleType = null;
 		List<Article> articleList = new ArrayList<>();
 
@@ -134,51 +56,124 @@ public class AdminDaoImpl implements AdminDao {
 		param[2]=pageSize;
 		
 		try {
-			rs = new CommonDaoImpl().executeQuery(sql, param);
+			rs = new DbObject().executeQuery(sql, param);
 			while (rs.next()) {
-				
 				article = new Article();
-				userInfo = new User();
 				articleType = new ArticleType();
 				article.setArticleID(rs.getInt("articleID"));
 				article.setArticleTitle(rs.getString("articleTitle"));
 				articleType.setArticleTypeID(rs.getInt("articleTypeID"));
 				articleType.setArticleTypeName(rs.getString("articleTypeName"));
-				article.setArticleType(articleType);
+				article.setArticleTypeID(articleType);
 
 				article.setArticleContent(rs.getString("articleContent"));
-				userInfo.setUserID(rs.getString("userID"));
-				article.setUserInfo(userInfo);
+				
 
-				article.setLaunchTime(rs.getString("launchTime"));
-				article.setLatestChangeTime(rs.getString("latestChangeTime"));
-				article.setSupportNum(rs.getInt("supportNum"));
-				article.setCommentNum(rs.getInt("commentNum"));
-				article.setArticlePublic(rs.getBoolean("articlePublic"));
-				article.setArticleComment(rs.getBoolean("articleComment"));
-				article.setArticleShare(rs.getBoolean("articleShare"));
-				article.setArticleDraft(rs.getBoolean("articleDraft"));
-				article.setArticleBlock(rs.getBoolean("articleBlock"));
-
+				article.setArticleCreateTime(rs.getString("articleCreateTime"));
+				article.setArticleStatus(rs.getBoolean("articleStatus"));
 				articleList.add(article);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new CommonDaoImpl().close();
+			new DbObject().close();
 		}
 		return articleList;
 	}
+	
+	public List<Diary> diaryPageDao(int pageIndex,int pageSize){
+		ResultSet rs = null;
+		// 声明变量
+		String sql="select top (select ?) * from "
+				+ "(select row_number() over(order by diaryID) as rownumber,* from diaryShow) "
+				+ "temp_row where rownumber>(?-1)*?";
+		Diary diary = null;
+		Parent parent = null;
+		DiaryType diaryType = null;
+		List<Diary> diaries = new ArrayList<>();
 
-	
-	
-	
-	
-	
-	
-	
+		Object[] param = new Object[3];
+		param[0]=pageSize;
+		param[1]=pageIndex;
+		param[2]=pageSize;
+		
+		try {
+			rs = new DbObject().executeQuery(sql, param);
+			while (rs.next()) {
+				
+				diary = new Diary();
+				parent = new Parent();
+				diaryType = new DiaryType();
+				
+				diary.setDiaryID(rs.getInt("diaryID"));
+				parent.setParentID(rs.getString("parentID"));
+				diaryType.setDiaryTypeID(rs.getInt("diaryTypeID"));
+				diaryType.setDiaryTypeName(rs.getString("diaryTypeName"));
+				diary.setDiaryType(diaryType);
+				diary.setParentID(parent);
+				
+				diary.setDiaryTitle(rs.getString("diaryTitle"));
+				diary.setDiaryContent(rs.getString("diaryContent"));
+				diary.setCreateTime(rs.getString("createTime"));
+				
+				diary.setCommentNum(rs.getInt("commentNum"));
+				diary.setDiaryStatus(rs.getBoolean("diaryStatus"));
+				
+				
+				diaries.add(diary);
+			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			new DbObject().close();
+		}
+		return diaries;
+	}
+	
+	public List<Parent> parentsPageDao(int pageIndex,int pageSize){
+		ResultSet rs = null;
+		// 声明变量
+		Parent parent = null;
+		List<Parent> parents = new ArrayList<>();
+		
+		String sql="select top (select ?) * from "
+				+ "(select row_number() over(order by parentID) as rownumber,* from parentShow) "
+				+ "temp_row where rownumber>(?-1)*?";
+		
+		Object[] param = new Object[3];
+		param[0]=pageSize;
+		param[1]=pageIndex;
+		param[2]=pageSize;
+		
+		
+	
+		try {
+			rs = new DbObject().executeQuery(sql, param);
+			while (rs.next()) {
+				parent = new Parent();
+				
+				parent.setParentID(rs.getString("parentID"));
+				parent.setPwd(rs.getString("pwd"));
+				parent.setName(rs.getString("namw"));
+				parent.setSex(rs.getString("sex"));
+				parent.setBirth(rs.getString("birth"));
+				parent.setRole(rs.getString("role"));
+				parent.setAddress(rs.getString("address"));
+				parent.setKidNum(rs.getInt("kidNum"));
+				parent.setStatus(rs.getBoolean("status"));
 
+				parents.add(parent);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			new DbObject().close();
+		}
+
+		return parents;
+	}
+	
 
 }

@@ -1,17 +1,18 @@
 package com.baby.dao.admin;
 
 import java.util.List;
-import java.util.Map;
 
-import com.baby.entity.Admin;
 import com.baby.entity.Article;
+import com.baby.entity.Diary;
+import com.baby.entity.Parent;
 
 public interface AdminDao {
 
-	List<Admin> backAdmin(Map<String, String> maps);
+	Boolean changeUserStatus(String parentID, boolean toStatus);
 
-	Boolean changeUserStatus(String userID, boolean toStatus);
-
-	
 	List<Article> articlePageDao(int pageIndex,int pageSize);
+	
+	List<Diary> diaryPageDao(int pageIndex,int pageSize);
+	
+	List<Parent> parentsPageDao(int pageIndex,int pageSize);
 }

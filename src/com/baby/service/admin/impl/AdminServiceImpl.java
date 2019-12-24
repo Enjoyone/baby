@@ -35,11 +35,6 @@ public class AdminServiceImpl implements AdminService {
 		return userList;
 	}
 	
-	public List<Admin> backAdmin(Map<String, String> maps) {
-		List<Admin> adminList = new ArrayList<>();
-		adminList = new AdminDaoImpl().backAdmin(maps);
-		return adminList;
-	}
 	
 	public List<ArticleType> backType() {
 		List<ArticleType> typeList = new ArrayList<>();
