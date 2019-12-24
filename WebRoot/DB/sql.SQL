@@ -1,5 +1,6 @@
 create database baby
 
+
 create table parent (
    parentID             varchar(30)     primary key     not null,
    pwd                  varchar(100)    not null,
@@ -148,7 +149,7 @@ create view parentShow
 as
 
 select a.parentID,pwd,name,sex,birth,role,address,phone,status,count(b.kidID) as kidNum
-from parent a join kid b
+from parent a left join kid b
 on a.parentID=b.parentID
 group by a.parentID,pwd,name,sex,birth,role,address,phone,status
 go
