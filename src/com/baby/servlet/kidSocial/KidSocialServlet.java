@@ -1,4 +1,4 @@
-package com.baby.servlet.community;
+package com.baby.servlet.kidSocial;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/community")
-public class CommunityServlet extends HttpServlet {
+@WebServlet("/kidSocial")
+public class KidSocialServlet extends HttpServlet {
 
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//  文章
-		
-		request.getRequestDispatcher("/community/community.jsp").forward(request,response);
+
+		request.getRequestDispatcher("/kidSocial/city.jsp").forward(request, response);
 	}
 
 }

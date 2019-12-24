@@ -14,7 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Include All Css -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="static/css/magnific-popup.css">
 	<link rel="stylesheet" href="static/css/font-awesome.min.css">
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
@@ -23,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="static/css/preset.css">
 	<link rel="stylesheet" href="static/otherCss/style.css">
 	<link rel="stylesheet" href="static/css/responsive.css">
-	<link rel="stylesheet" href="./index.css">
+	<link rel="stylesheet" href="index/index.css">
 
 </head>
 
@@ -41,9 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="indexShow">
 							<div>
 								<div>Play!</div>
-								<div class="two"> <img src="./images/index/map.png" alt=""> <a href="#">同城！</a></div>
+								<div class="two"> <img src="static/images/index/map.png" alt=""> <a href="kidSocial">儿童社交</a></div>
 							</div>
 							<div>
+							<div>Share!</div>
+							<div class="two"><a href="community">日记社区</a></div>
 							</div>
 						</div>
 					</div>
@@ -153,11 +154,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@include file="../headerFooter/footer.jsp" %>
 	</div>
 	<!-- Include All JavaScript -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/mixIt.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="static/js/jquery-3.3.1.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/mixIt.js"></script>
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/main.js"></script>
 </body>
 
 </html>

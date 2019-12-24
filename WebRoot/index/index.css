@@ -11,6 +11,64 @@
     border-left: 1px solid lightblue;
 }
 
+
+
+
+/* 首页显示同城和社区 */
+.indexShow{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+}
+.indexShow>div{
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+.indexShow>div div:nth-child(1){
+    font-size: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0) url("../static/images/home1/logo-bg.png") no-repeat scroll center center / cover ;
+    content: "";
+    height: 180px;
+    width: 230px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.indexShow>div div:nth-child(2){
+    font-size: 25px;
+    position: absolute;
+    /* border: 1px solid green; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 200px;
+    z-index: 999;
+}
+.indexShow>div div:nth-child(2) a{
+    text-decoration: none;
+    color: rgb(15, 14, 119);
+}
+
+.indexShow>div:nth-child(1) img{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+
 /* 文章 */
 .index1{
 
@@ -63,9 +121,6 @@
 .index2>div:nth-child(2)>div a{
     font-size: 25px;
 }
-
-
-
 
 
 
