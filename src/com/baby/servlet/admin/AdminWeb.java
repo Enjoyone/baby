@@ -16,7 +16,7 @@ import com.baby.dao.admin.impl.AdminDaoImpl;
 import com.baby.entity.Admin;
 import com.baby.entity.Article;
 import com.baby.entity.ArticleType;
-import com.baby.entity.User;
+import com.baby.entity.Parent;
 import com.baby.service.admin.impl.AdminServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -101,7 +101,7 @@ public class AdminWeb extends HttpServlet {
 
 	private void normalUserWeb(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		List<User> normalUserList=new ArrayList<>();
+		List<Parent> normalUserList=new ArrayList<Parent>();
 		normalUserList=new AdminServiceImpl().backNormalUser();
 		request.setAttribute("normalUserList", normalUserList);
 		request.getRequestDispatcher("/admin/user/normalUser.jsp").forward(

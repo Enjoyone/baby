@@ -1,19 +1,18 @@
-package com.blog.service.admin;
+package com.baby.service.admin;
 
 import java.util.List;
 import java.util.Map;
 
-import com.blog.entity.Admin;
-import com.blog.entity.AppealArticle;
-import com.blog.entity.Article;
-import com.blog.entity.ArticleType;
-import com.blog.entity.User;
+import com.baby.entity.Admin;
+import com.baby.entity.Article;
+import com.baby.entity.ArticleType;
+import com.baby.entity.Parent;
 
 public interface AdminService {
 
 	List<Article> backArticle();
 
-	List<User> backUser();
+	List<Parent> backUser();
 
 	List<Admin> backAdmin(Map<String, String> maps);
 
@@ -29,7 +28,5 @@ public interface AdminService {
 
 	Admin loginCheck(String userID, String userPWD);
 
-	List<AppealArticle> backAppealArticle();
 
-	boolean isDealAppealArticle(String articleID);
 }

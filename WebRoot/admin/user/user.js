@@ -52,8 +52,8 @@ $(function(){
 						$(".change-result").html("修改失败！");		
 					}
 					
-					 $(".change-result").css("top", $(".opertaTD").first().offset().top);
-					  $(".change-result").css("left",  $(".opertaTD").first().offset().left-200);
+					$(".change-result").css("top", $(".opertaTD").first().offset().top);
+					$(".change-result").css("left",  $(".opertaTD").first().offset().left-200);
 					
 					$(".change-result").show();
 					
@@ -85,8 +85,8 @@ $(function(){
 	$(".introduction").mouseenter(function(){
 		var con=$(this).find("span").text();
 		$(".intro-more").text(con);
-		   $(".intro-more").css("top", $(this).offset().top);
-		   $(".intro-more").css("left", $(this).offset().left-150);
+		$(".intro-more").css("top", $(this).offset().top);
+		$(".intro-more").css("left", $(this).offset().left-150);
 		if(con.length>8){
 			$(".intro-more").show();
 		}

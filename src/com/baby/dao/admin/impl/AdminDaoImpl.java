@@ -1,4 +1,4 @@
-package com.blog.dao.admin.impl;
+package com.baby.dao.admin.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

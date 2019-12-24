@@ -1,11 +1,10 @@
-package com.blog.dao.admin;
+package com.baby.dao.admin;
 
 import java.util.List;
 import java.util.Map;
 
-import com.blog.entity.Admin;
-import com.blog.entity.AppealArticle;
-import com.blog.entity.Article;
+import com.baby.entity.Admin;
+import com.baby.entity.Article;
 
 public interface AdminDao {
 
@@ -13,7 +12,6 @@ public interface AdminDao {
 
 	Boolean changeUserStatus(String userID, boolean toStatus);
 
-	List<AppealArticle> backAppealArticles();
 	
 	List<Article> articlePageDao(int pageIndex,int pageSize);
 }

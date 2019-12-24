@@ -8,9 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.baby.dao.admin.impl.AdminDaoImpl;
+import com.baby.dao.loginregisterdao.impl.LoginRegisterDaoImpl;
 import com.baby.entity.Admin;
+import com.baby.entity.Article;
+import com.baby.entity.ArticleType;
 import com.baby.entity.Parent;
-import com.blog.dao.admin.impl.AdminDaoImpl;
+import com.baby.service.admin.AdminService;
+
 
 
 
@@ -46,17 +51,17 @@ public class AdminServiceImpl implements AdminService {
 	
 //	
 	public Object[] backAboutUser() {
-		List<User> userList = new ArrayList<>();
-		userList=backUser();
+		List<Parent> parentList = new ArrayList<>();
+		parentList=backUser();
 		
-		int userNum=userList.size();
+		int userNum=parentList.size();
 		
 		int[] monthListActive=new int[30];
 		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 	    java.sql.Date sdate = null; //初始化 
 	    
 	    Date now =new Date();
-		for (User user : userList) {
+		for (Parent parent : parentList) {
 			try { 
 //				时间
 				java.util.Date udate = df.parse(""); 
@@ -81,25 +86,13 @@ public class AdminServiceImpl implements AdminService {
 		
 		return objects;
 	}
-//	返回屏蔽的文章
-	public List<Article> backBlockArticle() {
-		List<Article> articleList = new ArrayList<>();
-		List<Article> blockArticleList = new ArrayList<>();
-		articleList=backArticle();
-		for (Article article : blockArticleList) {
-			if (!article.isArticleBlock()&&!article.isArticleDraft()) {
-				blockArticleList.add(article);
-			}
-		}
-		return blockArticleList;
-	}
-
+	
 	
 	public Object[] backBlockUser() {
-		List<User> userList = new ArrayList<>();
-		List<User> blockUserList = new ArrayList<>();
-		userList=backUser();
-		for (User user : userList) {
+		List<Parent> parentList = new ArrayList<>();
+		List<Parent> blockUserList = new ArrayList<>();
+		parentList=backUser();
+		for (Parent user : parentList) {
 			if (!user.isStatus()) {
 				blockUserList.add(user);
 			}
@@ -107,23 +100,15 @@ public class AdminServiceImpl implements AdminService {
 		
 		List<Admin> adminList = new ArrayList<>();
 		List<Admin> blockAdminList = new ArrayList<>();
-		
-		Map<String, String> maps=new HashMap<>();
-		adminList=backAdmin(maps);
-		for (Admin admin : adminList) {
-			if (!admin.isStatus()) {
-				blockAdminList.add(admin);
-			}
-		}
-				
+		Map<String, String> maps=new HashMap<>();		
 		Object[] objects=new Object[2];
 		objects[0]=blockUserList;
-		objects[1]=blockAdminList;
+	
 		return objects;
 	}
 
-	public List<User> backNormalUser() {
-		List<User> userList = new ArrayList<>();
+	public List<Parent> backNormalUser() {
+		List<Parent> userList = new ArrayList<>();
 		userList=backUser();
 		return userList;
 	}
@@ -139,7 +124,7 @@ public class AdminServiceImpl implements AdminService {
 		List<Boolean> finalResult=new ArrayList<>();
 		Boolean changeResult=new AdminDaoImpl().changeUserStatus(userID,toStatus);
 		
-		List<User> userList=new ArrayList<>();
+		List<Parent> userList=new ArrayList<>();
 		Map<String, String> maps=new HashMap<>();
 		maps.put("userID", userID);
 		userList=new LoginRegisterDaoImpl().backUser(maps);
@@ -158,27 +143,20 @@ public class AdminServiceImpl implements AdminService {
 		Admin admin=new Admin();
 		admin=adminList.get(0);
 		
-		if (admin.getUserPWD().equals(userPWD)) {
+		if (admin.getPasswod().equals(userPWD)) {
 			return admin;
 		}else{
 			return null;
 		}
 	}
 
-	public List<AppealArticle> backAppealArticle() {
-		
-		return new AdminDaoImpl().backAppealArticles();
+	@Override
+	public List<Article> backBlockArticle() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public boolean isDealAppealArticle(String articleID) {
-		List<AppealArticle> appealArticles=new ArrayList<>();
-		appealArticles=backAppealArticle();
-		boolean s=false;
-		for (AppealArticle appealArticle : appealArticles) {
-			if (!articleID.equals(appealArticle.getArticleID())) {
-				return true;
-			}
-		}
-		return s;
-	}
+
+
+	
 }
