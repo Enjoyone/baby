@@ -108,16 +108,6 @@ public class AdminWeb extends HttpServlet {
 				request, response);
 		
 	}
-
-	private void manageUserWeb(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		List<Admin> manageUserList=new ArrayList<>();
-		manageUserList=new AdminServiceImpl().backManageUser();
-		request.setAttribute("manageUserList", manageUserList);
-		request.getRequestDispatcher("/admin/user/manageUser.jsp").forward(
-				request, response);
-		
-	}
 	
 
 	private void centerWeb(HttpServletRequest request,

@@ -24,14 +24,15 @@ public class AdminServiceImpl implements AdminService {
 	public List<Article> backArticle() {
 		List<Article> articleList = new ArrayList<>();
 		Map<String, String> maps=new HashMap<String, String>();
-		articleList = new ArticleBaseDaoImpl().articleShowDao(maps);
+//		articleList = new ArticleBaseDaoImpl().articleShowDao(maps);
+		
 		return articleList;
 	}
 
 	public List<Parent> backUser() {
 		List<Parent> userList = new ArrayList<>();
 		Map<String, String> maps=new HashMap<String, String>();
-		userList = new LoginRegisterDaoImpl().backUser(maps);
+//		userList = new LoginRegisterDaoImpl().backUser(maps);
 		return userList;
 	}
 	
@@ -39,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 	public List<ArticleType> backType() {
 		List<ArticleType> typeList = new ArrayList<>();
 		Map<String, String> maps=new HashMap<String, String>();
-		typeList = new ArticleBaseDaoImpl().articleTypeShowDao(maps);
+//		typeList = new ArticleBaseDaoImpl().articleTypeShowDao(maps);
 		return typeList;
 	}
 	
@@ -92,9 +93,7 @@ public class AdminServiceImpl implements AdminService {
 				blockUserList.add(user);
 			}
 		}
-		
-		List<Admin> adminList = new ArrayList<>();
-		List<Admin> blockAdminList = new ArrayList<>();
+
 		Map<String, String> maps=new HashMap<>();		
 		Object[] objects=new Object[2];
 		objects[0]=blockUserList;
@@ -108,12 +107,6 @@ public class AdminServiceImpl implements AdminService {
 		return userList;
 	}
 
-	public List<Admin> backManageUser() {
-		List<Admin> adminList = new ArrayList<>();
-		Map<String, String> maps=new HashMap<>();
-		adminList=backAdmin(maps);
-		return adminList;
-	}
 
 	public List<Boolean> changeUserStatus(String userID, boolean toStatus) {
 		List<Boolean> finalResult=new ArrayList<>();
@@ -122,7 +115,7 @@ public class AdminServiceImpl implements AdminService {
 		List<Parent> userList=new ArrayList<>();
 		Map<String, String> maps=new HashMap<>();
 		maps.put("userID", userID);
-		userList=new LoginRegisterDaoImpl().backUser(maps);
+//		userList=new LoginRegisterDaoImpl().backUser(maps);
 		boolean finalStatus=userList.get(0).isStatus();
 		
 		finalResult.add(changeResult);
@@ -130,18 +123,14 @@ public class AdminServiceImpl implements AdminService {
 		return finalResult;
 	}
 
-	public Admin loginCheck(String userID, String userPWD) {
-		List<Admin> adminList=new ArrayList<>();
-		Map<String, String> maps=new HashMap<>();
-		maps.put("userID", userID);
-		adminList=backAdmin(maps);
-		Admin admin=new Admin();
-		admin=adminList.get(0);
+	public boolean loginCheck(String userID, String userPWD) {
 		
-		if (admin.getPasswod().equals(userPWD)) {
-			return admin;
+		Admin admin=new AdminDaoImpl().backAdmin(userID);
+		
+		if (admin.getPasswod()!=null&&admin.getPasswod().equals(userPWD)) {
+			return true;
 		}else{
-			return null;
+			return false;
 		}
 	}
 
@@ -150,6 +139,10 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+
 
 
 

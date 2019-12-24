@@ -34,7 +34,7 @@
 			<div class="con">
 
 				<div class="con-next">
-					<div class="title1">管理类用户</div>
+					<div class="title1">已被禁用户</div>
 					<div class="table-responsive ">
 						<table class="table table-striped table-bordered table-hover">
 							<thead class=" table-success">

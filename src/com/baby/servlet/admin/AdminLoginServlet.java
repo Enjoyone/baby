@@ -25,11 +25,9 @@ public class AdminLoginServlet extends HttpServlet {
 		String userID=request.getParameter("userID");
 		String userPWD=request.getParameter("userPWD");
 		
-		Admin admin=new Admin();
-		admin =new AdminServiceImpl().loginCheck(userID,userPWD);
-		if (admin!=null) {
+		if (new AdminServiceImpl().loginCheck(userID,userPWD)) {
 			HttpSession hs = request.getSession();
-			hs.setAttribute("adminID", admin.getUserID());
+			hs.setAttribute("adminID", userID);
 			response.sendRedirect("admin");
 			return;
 		}else{

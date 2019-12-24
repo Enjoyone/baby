@@ -3,9 +3,11 @@ package com.baby.dao.admin.impl;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.baby.dao.DbObject;
 import com.baby.dao.admin.AdminDao;
+import com.baby.entity.Admin;
 import com.baby.entity.Article;
 import com.baby.entity.ArticleType;
 import com.baby.entity.Diary;
@@ -174,6 +176,35 @@ public class AdminDaoImpl implements AdminDao {
 
 		return parents;
 	}
+
+	public Admin backAdmin(String userID) {
+		ResultSet rs = null;
+		// 声明变量
+		Admin admin= null;
 	
+		
+		String sql="select * from admin where userID=? ";
+		
+		Object[] param = new Object[1];
+		param[0]=userID;
+	
+		try {
+			rs = new DbObject().executeQuery(sql, param);
+			while (rs.next()) {
+				admin = new Admin();
+				admin.setUserID(rs.getString("userID"));
+				admin.setPasswod(rs.getString("password"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			new DbObject().close();
+		}
+
+		return admin;
+	}
+	
+
 
 }

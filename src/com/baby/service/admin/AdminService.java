@@ -14,7 +14,6 @@ public interface AdminService {
 
 	List<Parent> backUser();
 
-	List<Admin> backAdmin(Map<String, String> maps);
 
 	List<ArticleType> backType();
 
@@ -22,11 +21,10 @@ public interface AdminService {
 
 	List<Article> backBlockArticle();
 
-	List<Admin> backManageUser();
 
 	List<Boolean> changeUserStatus(String userID, boolean toStatus);
 
-	Admin loginCheck(String userID, String userPWD);
+	boolean loginCheck(String userID, String userPWD);
 
 
 }
