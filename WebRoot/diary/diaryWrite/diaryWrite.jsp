@@ -13,14 +13,27 @@
 <base href="<%=basePath%>">
 <meta charset="utf-8">
 <title>write</title>
-<link rel="stylesheet" href="static/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="static/css/magnific-popup.css">
+	<link rel="stylesheet" href="static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/animate.css">
+	<link rel="stylesheet" href="static/css/fonts.css">
+	<link rel="stylesheet" href="static/css/preset.css">
+	<link rel="stylesheet" href="static/otherCss/style.css">
+	<link rel="stylesheet" href="static/css/responsive.css">
+	
+
 <link rel="stylesheet" href="diary/diaryWrite/diaryWrite.css">
 
 </head>
 
 <body>
 
-	<div class="container">
+<div>
+	<%@include file="../../headerFooter/header.jsp" %>
+	</div>
+	<div class="container container-write">
 		<!-- 提示 -->
 		<div class="result alert-info"></div>
 		<form class="form-group write-form" action="write" method="post">
@@ -57,8 +70,7 @@
 						<option value="0" class="new-article-type">新建类型</option>
 
 				</select> <span style="display: none" class="addResult"></span>
-					<div class="add-articleType input-group mb-auto"
-						style="display: none">
+					<div class="add-articleType input-group mb-auto" style="display: none;">
 
 						<input type="text" class="form-control" placeholder="文章类型名称"
 							name="new_type_name">
@@ -106,12 +118,21 @@
 			</div>
 		</form>
 	</div>
-
+	
+	<div>
+	<%@include file="../../headerFooter/footer.jsp" %>
+	</div>
+	<!-- Include All JavaScript -->
 	<script src="static/js/jquery-3.3.1.min.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/mixIt.js"></script>
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/main.js"></script>
+	
+	
 	<script src="diary/diaryWrite/diaryWrite.js"></script>
 	<script src="static/editor/wangEditor.min.js"></script>
-	<script src="article/articleWrite/editor.js"></script>
+	<script src="diary/diaryWrite/editor.js"></script>
 
 </body>
 

@@ -70,10 +70,6 @@
 						</div>
 					</div>
 					<div class="banner-info">
-						<div>
-						addsf
-						
-						</div>
 						<div class="news body-border">
 							<ul>
 								<li class="title">社区热点</li>
@@ -90,7 +86,29 @@
 							</ul>
 						</div>
 						<div class="app body-border">
-							<a href="#"> qwe </a>
+							<div>
+								<img alt="" src="community/images/2.jpg">
+							</div>
+							
+							
+							<div>
+								<div>
+								<a href="#">Tom01</a>
+								</div>
+								<div class="pb-2">
+								<span>日记数:<span  class="">1</span></span>
+								</div>
+								<div>
+								<span >字数:<span class="">20</span></span>
+								</div>
+							</div>
+							
+							
+							<div>
+							
+							<a href="diaryWrite">写日记</a>
+							
+							</div>
 						</div>
 					</div>
 				</div>

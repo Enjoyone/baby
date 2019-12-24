@@ -1,3 +1,8 @@
+
+.container-write{
+	border-top: 1px solid lightgray;
+}
+
 .write-form>div>label:nth-child(-n+3){
     font-size: 25px;
     padding-top: 20px;

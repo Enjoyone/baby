@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="static/css/preset.css">
 	<link rel="stylesheet" href="static/otherCss/style.css">
 	<link rel="stylesheet" href="static/css/responsive.css">
+	
+	
 	<link rel="stylesheet" href="index/index.css">
 
 </head>
