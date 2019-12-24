@@ -1,5 +1,6 @@
 create database baby
 
+
 create table parent (
    parentID             varchar(30)     primary key     not null,
    pwd                  varchar(100)    not null,
