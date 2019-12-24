@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.baby.dao.impl.DbObjectImpl;
+import com.baby.dao.DbObject;
 import com.baby.dao.loginregisterdao.LoginRegisterDao;
 import com.baby.entity.Parent;
 
@@ -24,7 +24,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 	@Override
 	public Parent backParentByParentID(String parentID) {
 		// TODO Auto-generated method stub
-		DbObjectImpl db = new DbObjectImpl();
+		DbObject db = new DbObject();
 		ResultSet rs = null;
 		Parent parent = null;
 
@@ -74,7 +74,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 		
 		try {
 			String sql = "insert into users(parentID,password,sex) values(?,?,?)";
-			i = new DbObjectImpl().executeUpdate(sql, param);
+			i = new DbObject().executeUpdate(sql, param);
 			if (i > 0) {
 				return true;
 			}
