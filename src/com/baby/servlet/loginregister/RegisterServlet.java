@@ -23,37 +23,15 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
 		Parent parent =new Parent();
-		parent.setParentID(request.getParameter("username"));
-		parent.setPwd(request.getParameter("password"));
-		parent.setSex(request.getParameter("sex"));
+		parent.setParentID(request.getParameter("id"));
+		parent.setName(request.getParameter("name"));
+		parent.setPwd(request.getParameter("pwd1"));
 		if(new LoginRegisterServiceImpl().addParent(parent)){
 			response.sendRedirect("login");
 			return;
+		}else{
+			return;
 		}
-//		<label class="sr-only" for="id">用户名</label> <input type="text"
-//				name="id" placeholder="用户名..."
-//				class="form-first-name form-control" id="id">
-//		</div>
-//		<div class="form-group">
-//			<label class="sr-only" for="name">姓名</label> <input
-//				type="text" name="name" placeholder="姓名..."
-//				class="form-last-name form-control" id="name">
-//		</div>
-//		<div class="form-group">
-//			<label class="sr-only" for="pwd1">密码</label> <input
-//				type="password" name="pwd1" placeholder="密码..."
-//				class="form-pwd form-control" id="pwd1">
-//		</div>
-//		<div class="form-group">
-//			<label class="sr-only" for="pwd2">密码</label> <input
-//				type="password" name="pwd2" placeholder="再次输入..."
-//				class="form-pwd form-control" id="pwd2">
-//		</div>
-//
-//		<button type="submit" class="btn">注册</button>
-//	</form>
-//	
-		
 		
 		
 	}

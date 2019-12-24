@@ -71,11 +71,11 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 		Object[] param = new Object[3];
 		param[0] = parent.getParentID();
 		param[1] = parent.getPwd();
-		param[2] = parent.getSex();
+		param[2] = parent.getName();
 		
 		
 		try {
-			String sql = "insert into users(parentID,password,sex) values(?,?,?)";
+			String sql = "insert into users(parentID,password,name) values(?,?,?)";
 			i = new DbObject().executeUpdate(sql, param);
 			if (i > 0) {
 				return true;
@@ -83,7 +83,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return false;
 	}
 

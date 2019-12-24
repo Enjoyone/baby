@@ -20,7 +20,10 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String parentID = request.getParameter("userName");
 		String password = request.getParameter("pwd");
+		
+		System.out.println(parentID+password);
 		if(new LoginRegisterServiceImpl().loginCheck(parentID, password)){
+			System.out.println("login success");
 			HttpSession session = request.getSession();
 			session.setAttribute("parentID", parentID);
 			response.sendRedirect("index");

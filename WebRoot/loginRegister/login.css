@@ -163,7 +163,7 @@ form li {
 }
 
 .icon {
-	background: url(../images/icons.png) no-repeat 0px 0px;
+	background: url(../loginRegister/images/icons.png) no-repeat 0px 0px;
 	height: 30px;
 	width: 30px;
 	display: block;
