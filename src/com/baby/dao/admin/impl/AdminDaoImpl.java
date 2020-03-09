@@ -3,9 +3,8 @@ package com.baby.dao.admin.impl;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import com.baby.dao.DbObject;
+import com.baby.dao.DBObject;
 import com.baby.dao.admin.AdminDao;
 import com.baby.entity.Admin;
 import com.baby.entity.Article;
@@ -29,7 +28,7 @@ public class AdminDaoImpl implements AdminDao {
 		param[1] = parentID;
 
 		try {
-			i = new DbObject().executeUpdate(sql, param);
+			i = new DBObject().executeUpdate(sql, param);
 			if (i > 0) {
 				success = true;
 			}
@@ -58,7 +57,7 @@ public class AdminDaoImpl implements AdminDao {
 		param[2]=pageSize;
 		
 		try {
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			while (rs.next()) {
 				article = new Article();
 				articleType = new ArticleType();
@@ -79,7 +78,7 @@ public class AdminDaoImpl implements AdminDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new DbObject().close();
+			new DBObject().close();
 		}
 		return articleList;
 	}
@@ -101,7 +100,7 @@ public class AdminDaoImpl implements AdminDao {
 		param[2]=pageSize;
 		
 		try {
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			while (rs.next()) {
 				
 				diary = new Diary();
@@ -129,7 +128,7 @@ public class AdminDaoImpl implements AdminDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new DbObject().close();
+			new DBObject().close();
 		}
 		return diaries;
 	}
@@ -152,7 +151,7 @@ public class AdminDaoImpl implements AdminDao {
 		
 	
 		try {
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			while (rs.next()) {
 				parent = new Parent();
 				
@@ -171,7 +170,7 @@ public class AdminDaoImpl implements AdminDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new DbObject().close();
+			new DBObject().close();
 		}
 
 		return parents;
@@ -189,7 +188,7 @@ public class AdminDaoImpl implements AdminDao {
 		param[0]=userID;
 	
 		try {
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			while (rs.next()) {
 				admin = new Admin();
 				admin.setUserID(rs.getString("userID"));
@@ -199,7 +198,7 @@ public class AdminDaoImpl implements AdminDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new DbObject().close();
+			new DBObject().close();
 		}
 
 		return admin;

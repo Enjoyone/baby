@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.baby.dao.DbObject;
+import com.baby.dao.DBObject;
 import com.baby.dao.diary.DiaryDao;
 import com.baby.entity.Diary;
 import com.baby.entity.DiaryType;
@@ -71,7 +71,7 @@ public class DiaryDaoImpl implements DiaryDao{
 		int q = -1;
 		// 加载驱动
 		try {
-			q = new DbObject().executeUpdate(sql, param);
+			q = new DBObject().executeUpdate(sql, param);
 			System.out.println(q);
 			if (q > 0) {
 				success = true;
@@ -118,7 +118,7 @@ public class DiaryDaoImpl implements DiaryDao{
 		}
 		// 加载驱动
 		try {
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			while (rs.next()) {
 				diaryType = new DiaryType();
 				parent = new Parent();
@@ -135,7 +135,7 @@ public class DiaryDaoImpl implements DiaryDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			new DbObject().close();
+			new DBObject().close();
 		}
 
 		return diaryTypes;

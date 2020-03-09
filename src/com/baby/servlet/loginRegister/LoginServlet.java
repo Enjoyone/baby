@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.baby.service.loginRegister.impl.LoginRegisterServiceImpl;
+import com.baby.service.loginregister.impl.LoginRegisterServiceImpl;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

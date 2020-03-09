@@ -1,4 +1,4 @@
-package com.baby.service.loginRegister.impl;
+package com.baby.service.loginregister.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.baby.dao.loginregisterdao.impl.LoginRegisterDaoImpl;
 import com.baby.entity.Parent;
-import com.baby.service.loginRegister.LoginRegisterService;
+import com.baby.service.loginregister.LoginRegisterService;
 
 public class LoginRegisterServiceImpl implements LoginRegisterService {
 

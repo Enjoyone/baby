@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.baby.entity.Parent;
-import com.baby.service.loginRegister.impl.LoginRegisterServiceImpl;
+import com.baby.service.loginregister.impl.LoginRegisterServiceImpl;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 

@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DbObject{
+public class DBObject{
 	private  static final String Driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private  static final String url = "jdbc:sqlserver://localhost:1433; DatabaseName=baby;user=sa;password=mis123456";
 	

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.baby.dao.DbObject;
+import com.baby.dao.DBObject;
 import com.baby.dao.loginregisterdao.LoginRegisterDao;
 import com.baby.entity.Parent;
 
@@ -33,7 +33,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 		
 		try {
 			// 4.
-			rs = new DbObject().executeQuery(sql, param);
+			rs = new DBObject().executeQuery(sql, param);
 			if (rs.next()) {
 				parent = new Parent();
 				parents=new ArrayList<>();
@@ -53,7 +53,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 			e.printStackTrace();
 		} finally {
 			// ¹
-			new DbObject().close();
+			new DBObject().close();
 		}
 		try {
 			rs.close();
@@ -76,7 +76,7 @@ public class LoginRegisterDaoImpl implements LoginRegisterDao {
 		
 		try {
 			String sql = "insert into users(parentID,password,name) values(?,?,?)";
-			i = new DbObject().executeUpdate(sql, param);
+			i = new DBObject().executeUpdate(sql, param);
 			if (i > 0) {
 				return true;
 			}
