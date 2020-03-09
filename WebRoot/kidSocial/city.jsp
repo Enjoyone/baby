@@ -20,8 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="static/css/preset.css">
 	<link rel="stylesheet" href="static/otherCss/style.css">
 	<link rel="stylesheet" href="static/css/responsive.css">
-	<link rel="stylesheet" href="./city.css">
-	<link rel="stylesheet" href="./map.css">
+	<link rel="stylesheet" href="kidSocial/city.css">
+	<link rel="stylesheet" href="kidSocial/map.css">
 
 </head>
 
@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							<div id="allmap"></div>
 						</div>
-						<script src="./map.js"></script>
+						<script src="kidSocial/map.js"></script>
 					</div>
 
 				</div>
@@ -237,10 +237,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- /.footer-section -->
 
 	<!-- Include All JavaScript -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/mixIt.js"></script>
-	<script src="js/main.js"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/mixIt.js"></script>
+	<script src="static/js/main.js"></script>
 
 </body>
 

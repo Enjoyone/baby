@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row">
 			<div class="col-sm-6 col-xs-12">
 				<div class="class-detail-img">
-					<img alt="" src="./images/city-social/1.jpg">
+					<img alt="" src="static/images/city-social/1.jpg">
 				</div>
 			</div>
 			<div class="col-sm-6 col-xs-12">
@@ -118,11 +118,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- /.footer-section -->
 
 <!-- Include All JavaScript -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/mixIt.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/main.js"></script>
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/mixIt.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/main.js"></script>
 </body>
 </html>
 
